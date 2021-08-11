@@ -1,5 +1,5 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
-    <div class="c-sidebar-brand d-lg-down-none">
+    <div class="c-sidebar-brand d-lg-down-none" style="background-color: white">
         <a href="{{ url('/') }}"><img src="{{ asset('images/logo.png') }}" class="c-sidebar-brand-full" width="118" height="46" alt="{{ config('app.name') }} Logo"></a>
     </div>
     <ul class="c-sidebar-nav">

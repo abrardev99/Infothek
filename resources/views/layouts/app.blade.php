@@ -49,7 +49,7 @@
             </div>
         </main>
         <footer class="c-footer">
-            <div><a href="{{ url('/') }}">LMS</a> © <script> document.write(new Date().getFullYear()) </script></div>
+            <div><a href="{{ url('/') }}">{{ config('app.name') }}</a> © <script> document.write(new Date().getFullYear()) </script></div>
         </footer>
     </div>
 </div>
@@ -62,7 +62,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js"></script>
 @livewireScripts
-@livewire('livewire-ui-spotlight')
 <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
 
 <script>

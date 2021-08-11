@@ -17,7 +17,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right pt-0">
 
-                <a class="dropdown-item" href="{{ route('common.profile') }}">
+                <a class="dropdown-item" href="{{ route('profile') }}">
                     <svg class="c-icon mr-2">
                         <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
                     </svg> Update Profile</a>
