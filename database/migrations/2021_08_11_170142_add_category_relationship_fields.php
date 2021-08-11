@@ -16,6 +16,7 @@ class AddCategoryRelationshipFields extends Migration
     {
         Schema::table('categories' , function (Blueprint $table){
             $table->foreignId('category_id')
+                ->nullable()
                 ->comment('Parent Category ID from the same table')
                 ->constrained('categories');
         });

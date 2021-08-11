@@ -20,6 +20,8 @@ class CreateCategoriesTable extends Migration
             $table->longText('description')->nullable();
             $table->string('slug')->unique();
             $table->timestamps();
+
+            $table->foreignId('user_id')->constrained('users');
         });
     }
 

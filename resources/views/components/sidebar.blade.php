@@ -11,7 +11,7 @@
 
         @if(auth()->check())
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="">
+                <a class="c-sidebar-nav-link" href="{{ route('category.index') }}">
                     <svg class="c-sidebar-nav-icon">
                         <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-newspaper') }}"></use>
                     </svg>

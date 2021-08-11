@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/dashboard', Controllers\User\DashboardController::class)->name('dashboard');
     Route::view('/profile', 'user.profile')->name('profile');
 
+    Route::resource('category', Controllers\User\CategoryController::class)->except('destroy');
 
 });
 

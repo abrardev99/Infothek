@@ -32,7 +32,7 @@ class Category extends Model
 
     public function parentCategory(): Relations\BelongsTo
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(Category::class, 'category_id')->withDefault();
 
     }
 
