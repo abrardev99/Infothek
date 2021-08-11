@@ -10,7 +10,10 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.54",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.5"
+        "livewire/livewire": "^2.5",
+        "rappasoft/laravel-livewire-tables": "^1.12",
+        "spatie/laravel-medialibrary": "^9.7",
+        "spatie/laravel-sluggable": "^2.6"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
