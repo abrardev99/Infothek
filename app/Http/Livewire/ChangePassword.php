@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Illuminate\Validation\Rules\Password;
 use Livewire\Component;
+use Validator;
 
 class ChangePassword extends Component
 {
