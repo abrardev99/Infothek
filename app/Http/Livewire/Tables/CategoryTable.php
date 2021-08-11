@@ -10,19 +10,27 @@ use Rappasoft\LaravelLivewireTables\Views\Filter;
 
 class CategoryTable extends DataTableComponent
 {
-
+    public array $parentCategoriesKeys = [];
     public string $defaultSortColumn = 'id';
     public string $defaultSortDirection = 'desc';
+    public array $filterNames = [
+        'category' => 'Categories where parent category is',
+    ];
+
+    public function mount()
+    {
+       $this->parentCategoriesKeys = Category::whereNull('category_id')->pluck('name', 'id')->toArray();
+    }
 
     public function filters(): array
     {
         return [
-            'category' => Filter::make('Categories')
-                ->select([
-                    '' => 'Any',
-                    3 => 'Child of Modi',
-                    1 => 'Child of suscipit',
-                ]),
+            'category' => Filter::make('Parent Categories')
+                ->select(
+                    ['' => 'Any',]
+                    +
+                    $this->parentCategoriesKeys,
+                ),
         ];
     }
 
