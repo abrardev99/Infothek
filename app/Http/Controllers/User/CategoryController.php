@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Requests\CategoryStoreRequest;
+use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -13,25 +15,37 @@ class CategoryController
         return view('user.category.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create() : View
     {
-        //
+        $categories = Category::whereNull('category_id')
+            ->with('childCategories')
+            ->get();
+
+        return view('user.category.create', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
-        //
+        auth()->user()->categories()->create($request->validated());
+        session()->flash('success', 'Category created successfully.');
+
+        switch ($request->from) {
+            case 'save':
+                return redirect()->route('category.index');
+                break;
+
+            case 'save_and_create_new':
+                return redirect()->route('category.create');
+                break;
+
+            case 'save_and_create_post':
+//                @todo latter when create course
+//                return redirect()->route('admin.chapter.create', ['course_id' => $course->id]);
+                break;
+
+            default:
+                return redirect()->route('category.index');
+        }
     }
 
     /**
@@ -45,37 +59,36 @@ class CategoryController
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Category $category) : View
     {
-        //
+        $categories = Category::whereNull('category_id')
+            ->with('childCategories')
+            ->get();
+
+        return view('user.category.edit', compact('categories', 'category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(CategoryStoreRequest $request, Category $category)
     {
-        //
-    }
+        $category->update($request->validated());
+        session()->flash('success', 'Category updated successfully.');
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        switch ($request->from) {
+            case 'save':
+                return redirect()->route('category.index');
+                break;
+
+            case 'save_and_create_new':
+                return redirect()->route('category.create');
+                break;
+
+            case 'save_and_create_post':
+//                @todo latter when create course
+//                return redirect()->route('admin.chapter.create', ['course_id' => $course->id]);
+                break;
+
+            default:
+                return redirect()->route('category.index');
+        }
     }
 }
