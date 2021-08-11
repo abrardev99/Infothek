@@ -9,37 +9,22 @@
                 </svg>
                 Dashboard</a></li>
 
-        @if(auth()->user()->hasRole('admin'))
+        @if(auth()->check())
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="{{ route('admin.course.index') }}">
+                <a class="c-sidebar-nav-link" href="">
                     <svg class="c-sidebar-nav-icon">
                         <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-newspaper') }}"></use>
                     </svg>
-                    Course Management
+                    Categories Management
                 </a>
             </li>
+
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="{{ route('admin.chapter.index') }}">
+                <a class="c-sidebar-nav-link" href="">
                     <svg class="c-sidebar-nav-icon">
-                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-library') }}"></use>
+                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-newspaper') }}"></use>
                     </svg>
-                    Chapter Management
-                </a>
-            </li>
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="{{ route('admin.lesson.index') }}">
-                    <svg class="c-sidebar-nav-icon">
-                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-excerpt') }}"></use>
-                    </svg>
-                    Lesson Management
-                </a>
-            </li>
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="{{ route('admin.users.index') }}">
-                    <svg class="c-sidebar-nav-icon">
-                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
-                    </svg>
-                    Users Management
+                    Posts Management
                 </a>
             </li>
         @endif

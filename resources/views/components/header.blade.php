@@ -21,12 +21,7 @@
                     <svg class="c-icon mr-2">
                         <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
                     </svg> Update Profile</a>
-                @if(auth()->user()->hasRole('admin'))
-                    <a class="dropdown-item" href="{{ route('admin.api.token.index') }}">
-                        <svg class="c-icon mr-2">
-                            <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-font') }}"></use>
-                        </svg> API Token</a>
-                @endif
+
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">
