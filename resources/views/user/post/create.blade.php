@@ -189,8 +189,8 @@
                 noneditable_noneditable_class: 'mceNonEditable',
                 toolbar_mode: 'sliding',
                 contextmenu: 'link image imagetools table',
-                skin: useDarkMode ? 'oxide-dark' : 'oxide',
-                content_css: useDarkMode ? 'dark' : 'default',
+                skin: 'oxide',
+                content_css: 'default',
                 content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
             });
 
