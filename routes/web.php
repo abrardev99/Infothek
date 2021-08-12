@@ -25,6 +25,8 @@ Route::group(['middleware' => 'auth'], function (){
     Route::view('/profile', 'user.profile')->name('profile');
 
     Route::resource('category', Controllers\User\CategoryController::class)->except('destroy');
+    Route::resource('post', Controllers\User\PostController::class)->except('destroy');
+    Route::post('post/tinymce/image', [Controllers\User\PostController::class, 'tinymceImageStore'])->name('post.tinymce-image.store');
 
 });
 
