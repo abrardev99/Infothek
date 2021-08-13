@@ -14,9 +14,7 @@ use \App\Http\Controllers;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [Controllers\FrontendController::class, 'index']);
 
 
 Route::group(['middleware' => 'auth'], function (){

@@ -74,7 +74,6 @@ class PostController
         ]));
 
         if ($request->has('thumbnail')) {
-            $post->clearMediaCollection('thumbnails');
             $post->addMedia(storage_path('app/' . $request->thumbnail))->toMediaCollection('thumbnails');
         }
 
