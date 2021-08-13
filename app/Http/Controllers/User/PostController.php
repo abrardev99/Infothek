@@ -55,7 +55,7 @@ class PostController
 
     public function show(Post $post)
     {
-        //
+        return view('user.post.show', compact('post'));
     }
 
     public function edit(Post $post)

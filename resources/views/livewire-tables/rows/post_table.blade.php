@@ -11,7 +11,7 @@
 </x-livewire-tables::bs4.table.cell>
 
 <x-livewire-tables::bs4.table.cell>
-    <a href="{{ $row->getFirstMediaUrl('thumbnails') ?? '' }}" target="_blank"><img width="50px" src="{{ $row->getFirstMediaUrl('thumbnails') ?? '' }}"></a
+    <a href="{{ $row->getFirstMediaUrl('thumbnails') ?? '' }}" target="_blank"><img width="50px" src="{{ $row->getFirstMediaUrl('thumbnails') ?? '' }}"></a>
 </x-livewire-tables::bs4.table.cell>
 
 <x-livewire-tables::bs4.table.cell>
