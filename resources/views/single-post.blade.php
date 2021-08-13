@@ -1,5 +1,5 @@
 <x-frontend-layout :title="$post->title" :description="$post->excerpt">
-
+    <x-front.header/>
     <!-- Page content-->
     <div class="container">
         <div class="row">
