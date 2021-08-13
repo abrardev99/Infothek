@@ -18,7 +18,6 @@ class CategoryController
     public function create() : View
     {
         $categories = Category::whereNull('category_id')
-            ->with('childCategories')
             ->get();
 
         return view('user.category.create', compact('categories'));

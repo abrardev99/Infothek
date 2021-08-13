@@ -33,11 +33,6 @@
                                         <option value="">None</option>
                                         @forelse($categories as $category)
                                             <option {{ old('category_id') == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
-
-                                            @foreach($category->childCategories as $childCategory)
-                                                <option value="{{ $childCategory->id }}" {{ old('category_id') == $childCategory->id ? 'selected' : '' }}>&nbsp;-- {{ $childCategory->name }}</option>
-                                            @endforeach
-
                                         @empty
                                         @endforelse
                                     </select>
