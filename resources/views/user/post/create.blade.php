@@ -13,11 +13,11 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="name">Name<small class="text-danger">*</small></label>
-                                    <input name="name" id="name" type="text" value="{{ old('name') }}"
-                                           class="form-control @error('name') is-invalid @enderror" autofocus required>
-                                    <small>Name will be unique slug</small>
-                                    @error('name')
+                                    <label for="title">Title<small class="text-danger">*</small></label>
+                                    <input name="title" id="title" type="text" value="{{ old('title') }}"
+                                           class="form-control @error('title') is-invalid @enderror" autofocus required>
+                                    <small>Title will be unique slug</small>
+                                    @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                  </span>
@@ -27,12 +27,20 @@
 
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="category_id">Parent Category</label>
+                                    <label for="category_id">Category <small class="text-danger">*</small></label>
                                     <select name="category_id"
-                                            class="select2 form-control @error('category_id') is-invalid @enderror" id="category_id">
+                                            class="select2 form-control @error('category_id') is-invalid @enderror" id="category_id" required>
                                         <option value="">None</option>
-                                    </select>
+                                        @forelse($categories as $category)
+                                            <option {{ old('category_id') == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
 
+                                            @foreach($category->childCategories as $childCategory)
+                                                <option value="{{ $childCategory->id }}" {{ old('category_id') == $childCategory->id ? 'selected' : '' }}>&nbsp;-- {{ $childCategory->name }}</option>
+                                            @endforeach
+
+                                        @empty
+                                        @endforelse
+                                    </select>
                                     @error('category_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -43,11 +51,11 @@
 
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label for="description">Description</label>
-                                    <input name="description" id="description" type="text" value="{{ old('description') }}"
-                                           class="form-control @error('description') is-invalid @enderror">
+                                    <label for="excerpt">Excerpt <small class="text-danger">*</small></label>
+                                    <input name="excerpt" id="excerpt" type="text" value="{{ old('excerpt') }}"
+                                           class="form-control @error('excerpt') is-invalid @enderror">
                                     <small>Max length 200 characters</small>
-                                    @error('description')
+                                    @error('excerpt')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                      </span>
@@ -55,10 +63,56 @@
                                 </div>
                             </div>
 
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="type">Thumbnail Image<small class="text-danger">*</small></label>
+                                    <x-input.filepond
+                                        ref="thumbnail"
+                                        name="thumbnail"
+                                        allowImagePreview
+                                        imagePreviewMaxHeight="150"
+                                        allowFileTypeValidation
+                                        acceptedFileTypes="['image/png', 'image/jpg']"
+                                        allowFileSizeValidation
+                                        maxFileSize="4mb"
+                                        server="{{ url('filepond/thumbnail') }}"
+                                    />
+                                </div>
+                                @error('thumbnail')
+                                <span class="text-danger" role="alert">
+                                 <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="type">Attachments <small>(if any)</small></label>
+                                    <x-input.filepond
+                                        multiple
+                                        ref="attachments"
+                                        name="attachments[]"
+                                        allowImagePreview
+                                        imagePreviewMaxHeight="150"
+                                        allowFileTypeValidation
+                                        acceptedFileTypes="['application/msword', 'application/vnd.ms-excel', 'application/vnd.ms-powerpoint',
+                                            'text/plain', 'application/pdf', 'application/csv', 'image/*']"
+                                        allowFileSizeValidation
+                                        maxFileSize="4mb"
+                                        server="{{ url('filepond/attachments') }}"
+                                    />
+                                    @error('attachments')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <textarea name="content" id="content"
-                                              class="form-control @error('content') is-invalid @enderror"></textarea>
+                                              class="form-control @error('content') is-invalid @enderror">{{ old('content') }}</textarea>
                                     @error('content')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

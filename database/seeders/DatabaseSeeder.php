@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
         Category::factory()->count(20)->create([
             'category_id' => rand(1,5),
         ]);
+        Post::factory()->count(10)->create();
 
     }
 }

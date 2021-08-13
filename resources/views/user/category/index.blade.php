@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header"><h3>Categories</h3></div>
                 <div class="card-body">
-                    <livewire:tables.category-table>
+                    <livewire:tables.category-table />
                 </div>
             </div>
         </div>

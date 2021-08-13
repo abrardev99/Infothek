@@ -45,4 +45,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Category::class);
     }
+
+
+    public function posts(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+
 }

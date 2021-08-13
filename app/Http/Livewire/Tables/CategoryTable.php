@@ -61,6 +61,6 @@ class CategoryTable extends DataTableComponent
     public function destroy(Category $category)
     {
         $category->delete();
-        $this->dispatchBrowserEvent('success', ['message' => 'Course deleted successfully']);
+        $this->dispatchBrowserEvent('success', ['message' => 'Category deleted successfully']);
     }
 }

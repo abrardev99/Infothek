@@ -30,4 +30,18 @@ Route::group(['middleware' => 'auth'], function (){
 
 });
 
+//     filepond routes
+Route::group(['prefix' => 'filepond'], function (){
+
+    Route::post('/thumbnail', function (\Illuminate\Http\Request $request){
+        $ctrl = new Controllers\FilePondController();
+        return $ctrl->upload('thumbnail', $request);
+    });
+    Route::post('/attachments', function (\Illuminate\Http\Request $request){
+        $ctrl = new Controllers\FilePondController();
+        return $ctrl->upload('attachments', $request);
+    });
+    Route::delete('/', [Controllers\FilePondController::class, 'delete']);
+});
+
 require __DIR__.'/auth.php';

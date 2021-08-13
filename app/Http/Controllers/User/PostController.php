@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Requests\StorePostRequest;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -14,10 +16,13 @@ class PostController
 
     public function create()
     {
-        return view('user.post.create');
+        $categories = Category::whereNull('category_id')
+            ->with('childCategories')
+            ->get();
+        return view('user.post.create', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         dd($request->all());
     }
