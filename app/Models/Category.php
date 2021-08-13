@@ -42,5 +42,11 @@ class Category extends Model
 
     }
 
+    public function posts(): Relations\HasMany
+    {
+        return $this->hasMany(Post::class, 'category_id');
+
+    }
+
 
 }

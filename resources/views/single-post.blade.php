@@ -26,7 +26,12 @@
                     <div class="card-body">
                         <div class="small mb-2 text-muted">Published {{ $post->created_at->diffForHumans() }}
                             by {{ optional($post->user)->name }}</div>
-                        Category <span class="badge bg-secondary">{{ optional($post->category)->name }}</span>
+                        Category
+                        @if($post->category)
+                            <a href="{{ route('category-posts', $post->category) }}"><span class="badge bg-secondary">{{ $post->category->name }}</span></a>
+                        @else
+                            <span class="badge bg-secondary"><i>Undefined</i></span>
+                        @endif
                     </div>
                 </div>
 

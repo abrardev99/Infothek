@@ -2,20 +2,18 @@
 
 namespace App\View\Components\Front;
 
+use App\Models\Category;
 use Illuminate\View\Component;
 
 class Nav extends Component
 {
+    public $categories;
     public function __construct()
     {
-        //
+        $this->categories = Category::whereNull('category_id')
+                                        ->with('childCategories')->get();
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
-     */
     public function render()
     {
         return view('components.front.nav');

@@ -7,10 +7,25 @@
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
+                @forelse($categories as $category)
+
+                    @if($category->childCategories->count() > 0)
+                        <li class="nav-item"><a class="nav-link {{ url()->current() ==  route('category-posts', $category) ? 'active' : '' }} " href="{{ route('category-posts', $category) }}">{{ $category->name }}</a></li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="{{ $category->id }}" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                            <ul class="dropdown-menu" aria-labelledby="{{ $category->id }}">
+                                @foreach($category->childCategories as $childCategory)
+                                    <li><a class="dropdown-item" href="{{ route('category-posts', $childCategory) }}">{{ $childCategory->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @else
+                        <li class="nav-item"><a class="nav-link {{ url()->current() ==  route('category-posts', $category) ? 'active' : '' }} " href="{{ route('category-posts', $category) }}">{{ $category->name }}</a></li>
+                    @endif
+
+                @empty
+                @endforelse
             </ul>
         </div>
     </div>
