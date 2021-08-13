@@ -38,11 +38,6 @@ class CategoryController
                 return redirect()->route('category.create');
                 break;
 
-            case 'save_and_create_post':
-//                @todo latter when create course
-//                return redirect()->route('admin.chapter.create', ['course_id' => $course->id]);
-                break;
-
             default:
                 return redirect()->route('category.index');
         }
@@ -80,11 +75,6 @@ class CategoryController
 
             case 'save_and_create_new':
                 return redirect()->route('category.create');
-                break;
-
-            case 'save_and_create_post':
-//                @todo latter when create course
-//                return redirect()->route('admin.chapter.create', ['course_id' => $course->id]);
                 break;
 
             default:

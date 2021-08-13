@@ -1,4 +1,4 @@
-<x-app-layout :title="'Edit Category'">
+<x-app-layout :title="'Edit '.$category->name">
     <div class="row">
         <div class="col-12">
             <div class="text-right mb-3">

@@ -25,13 +25,20 @@ class StorePostRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'title' => ['required', 'string', 'max:255'],
             'category_id' => ['required', Rule::exists('categories', 'id')],
             'excerpt' => ['required', 'string', 'max:200'],
-            'thumbnail' => ['required'],
             'content' => ['required'],
         ];
+
+        if ($this->getMethod() == 'POST') {
+            $rules += ['thumbnail' => ['required']];
+        } else {
+            $rules += ['thumbnail' => ['nullable']];
+        }
+
+        return $rules;
     }
 
 }

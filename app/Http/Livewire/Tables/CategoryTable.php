@@ -40,7 +40,7 @@ class CategoryTable extends DataTableComponent
             Column::make('Name')->sortable()->searchable(),
             Column::make('Slug')->sortable()->searchable(),
             Column::make('Description')->sortable()->searchable(),
-            Column::make('Parent Category')->sortable()->searchable(),
+            Column::make('Parent Category'),
             Column::make('Actions'),
         ];
     }
@@ -49,8 +49,7 @@ class CategoryTable extends DataTableComponent
     {
         return Category::query()
             ->with('parentCategory')
-            ->when($this->getFilter('category'), fn ($query, $categoryId) => $query->where('category_id', $categoryId))
-            ;
+            ->when($this->getFilter('category'), fn ($query, $categoryId) => $query->where('category_id', $categoryId));
     }
 
     public function rowView(): string
