@@ -22,6 +22,5 @@ class DatabaseSeeder extends Seeder
             'category_id' => rand(1,5),
         ]);
         Post::factory()->count(10)->create();
-
     }
 }

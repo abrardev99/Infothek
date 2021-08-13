@@ -12,4 +12,10 @@ class FrontendController extends Controller
         $posts = Post::with(['category', 'media'])->paginate();
         return view('welcome', compact('posts'));
     }
+
+    public function show(Post $post)
+    {
+        $relatedPosts = Post::select(['id', 'slug', 'title'])->where('category_id', $post->category_id)->get();
+        return view('single-post', compact('post', 'relatedPosts'));
+    }
 }

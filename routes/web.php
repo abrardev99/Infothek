@@ -42,4 +42,7 @@ Route::group(['prefix' => 'filepond'], function (){
     Route::delete('/', [Controllers\FilePondController::class, 'delete']);
 });
 
+Route::get('/{post}', [Controllers\FrontendController::class, 'show'])->name('single-post');
+
+
 require __DIR__.'/auth.php';
