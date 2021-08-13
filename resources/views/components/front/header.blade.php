@@ -6,7 +6,7 @@
                 <form method="GET" action="{{ url('/') }}">
                     <div class="form">
                         <i class="fa fa-search"></i>
-                        <input value="{{ request()->get('q') }}" name="q" type="search" class="form-control form-input" placeholder="Search anything..."
+                        <input value="{{ request()->get('q') }}" name="q" type="search" class="form-control form-input" placeholder="Hit Enter to search"
                                autofocus>
                     </div>
                 </form>
