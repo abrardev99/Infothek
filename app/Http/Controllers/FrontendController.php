@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with(['category', 'media'])->paginate();
+        $posts = Post::with(['category', 'media'])
+        ->when($request->q, fn($query, $q) => $query->whereLike(['title', 'excerpt'], $q))
+        ->paginate();
+
         return view('welcome', compact('posts'));
     }
 
