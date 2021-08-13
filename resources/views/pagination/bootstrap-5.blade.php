@@ -8,7 +8,7 @@
             <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
 
         @else
-            <li class="page-item disabled"><a class="page-link" href="{{ $paginator->previousPageUrl() }}" tabindex="-1"
+            <li class="page-item"><a class="page-link" href="{{ $paginator->previousPageUrl() }}" tabindex="-1"
                                               aria-disabled="true">Newer</a></li>
         @endif
 
