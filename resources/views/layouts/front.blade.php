@@ -60,7 +60,7 @@
 
 <!-- Footer-->
 <footer class="py-5 bg-light">
-    <div class="container"><p class="m-0 text-center">Copyright &copy; Your Website 2021</p></div>
+    <div class="container"><p class="m-0 text-center"><a href="{{ url('/') }}">{{ config('app.name') }}</a> © <script> document.write(new Date().getFullYear()) </script></p></div>
 </footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
