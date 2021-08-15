@@ -49,7 +49,7 @@ class CategoryTable extends DataTableComponent
     {
         return Category::query()
             ->with('parentCategory')
-            ->when($this->getFilter('category'), fn ($query, $categoryId) => $query->where('category_id', $categoryId));
+            ->when($this->getFilter('category'), function ($query, $categoryId) { $query->where('category_id', $categoryId);});
     }
 
     public function rowView(): string

@@ -11,7 +11,9 @@ class FrontendController extends Controller
     public function index(Request $request)
     {
         $posts = Post::with(['category', 'media'])
-        ->when($request->q, fn($query, $q) => $query->whereLike(['title', 'excerpt'], $q))
+        ->when($request->q, function($query, $q) {
+            $query->whereLike(['title', 'excerpt', 'category.name'], $q);
+        })
         ->paginate();
 
         return view('welcome', compact('posts'));
