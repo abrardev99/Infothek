@@ -9,6 +9,7 @@ class DashboardController extends Controller
 {
     public function __invoke(Request $request)
     {
-        return view('user.dashboard');
+        return redirect()->route('post.index');
+//        return view('user.dashboard');
     }
 }
