@@ -68,7 +68,6 @@
                         </div>
                         <button name="from" type="submit" value="save" class="btn btn-primary">Save</button>
                         <button name="from" type="submit" value="save_and_create_new" class="btn btn-primary">Save And Create New</button>
-                        <button name="from" type="submit" value="save_and_create_post" class="btn btn-primary">Save And Create Post</button>
                     </form>
                 </div>
             </div>
