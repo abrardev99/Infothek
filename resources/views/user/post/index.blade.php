@@ -12,11 +12,4 @@
             </div>
         </div>
     </div>
-    @push('scripts')
-        <script>
-            $(document).ready(function (){
-                $('.c-sidebar-minimizer').trigger('click')
-            })
-        </script>
-    @endpush
 </x-app-layout>
