@@ -16,7 +16,11 @@ class FrontendController extends Controller
         })
         ->paginate();
 
-        return view('welcome', compact('posts'));
+        $categories = Category::with('childCategories')
+            ->whereNull('category_id')
+            ->get();
+
+        return view('welcome', compact('posts', 'categories'));
     }
 
     public function show(Post $post)
@@ -27,7 +31,11 @@ class FrontendController extends Controller
 
     public function categoryPosts(Category $category)
     {
+        $categories = Category::with('childCategories')
+            ->whereNull('category_id')
+            ->get();
+
         $posts = $category->posts()->with(['category', 'media'])->paginate();
-        return view('welcome', compact('posts', 'category'));
+        return view('welcome', compact('posts', 'category', 'categories'));
     }
 }

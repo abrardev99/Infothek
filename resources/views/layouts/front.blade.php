@@ -13,6 +13,8 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('frontend/css/styles.css') }}" rel="stylesheet"/>
 
+    @stack('styles')
+
     <style>
         .height {
             height: 10vh

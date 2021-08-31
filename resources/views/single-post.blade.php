@@ -28,7 +28,8 @@
                             by {{ optional($post->user)->name }}</div>
                         Category
                         @if($post->category)
-                            <a href="{{ route('category-posts', $post->category) }}"><span class="badge bg-secondary">{{ $post->category->name }}</span></a>
+                            <a href="{{ route('category-posts', $post->category) }}"><span
+                                    class="badge bg-secondary">{{ $post->category->name }}</span></a>
                         @else
                             <span class="badge bg-secondary"><i>Undefined</i></span>
                         @endif
@@ -40,6 +41,21 @@
                     <div class="card-header">Post Excerpt</div>
                     <div class="card-body">{{ $post->excerpt }}</div>
                 </div>
+
+            @if($post->hasMedia('attachments'))
+                <!-- Side widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Attachments</div>
+                        <div class="card-body">
+
+                            @forelse($post->getMedia('attachments') as $attachment)
+                                <a href="{{ optional($attachment)->getUrl() }}"
+                                   target="_blank">{{ optional($attachment)->name.' '.optional($attachment)->mime_type }}</a>
+                            @empty
+                            @endforelse
+                        </div>
+                    </div>
+                @endif
 
 
                 <div class="card mb-4">

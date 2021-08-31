@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Tables;
 
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -59,6 +60,7 @@ class CategoryTable extends DataTableComponent
 
     public function destroy(Category $category)
     {
+        Post::where('category_id', $category->id)->delete();
         $category->delete();
         $this->dispatchBrowserEvent('success', ['message' => 'Category deleted successfully']);
     }
