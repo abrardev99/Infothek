@@ -5,7 +5,7 @@
                 <a href="{{ route('category.index') }}" class="btn btn-primary text-white" >Back</a>
             </div>
             <div class="card">
-                <div class="card-header"><h3>Edit Category</h3></div>
+                <div class="card-header"><h3>Edit Kategorie</h3></div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('category.update', $category) }}" enctype="multipart/form-data">
                         @csrf

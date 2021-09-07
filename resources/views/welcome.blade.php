@@ -8,7 +8,7 @@
             <div class="col-lg-3">
 
                 <div class="card mb-4">
-                    <div class="card-header">Categories</div>
+                    <div class="card-header">Kategorien</div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-6">
@@ -46,7 +46,7 @@
                                         </p>
                                     @endif
                                 @empty
-                                    <li>No Category Found</li>
+                                    <li>No Kategorien Found</li>
                                 @endforelse
 
 
