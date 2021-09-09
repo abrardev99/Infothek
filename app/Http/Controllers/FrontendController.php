@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
+
+
     public function index(Request $request)
     {
         $posts = Post::with(['category', 'media'])
