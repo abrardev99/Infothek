@@ -56,7 +56,7 @@
     </style>
 </head>
 <body>
-<x-front.nav/>
+ <x-front.nav/>
 
 {{ $slot }}
 

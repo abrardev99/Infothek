@@ -38,14 +38,14 @@
 
                 <!-- Side widget-->
                 <div class="card mb-4">
-                    <div class="card-header">Post Excerpt</div>
+                    <div class="card-header">Post Beschreibung</div>
                     <div class="card-body">{{ $post->excerpt }}</div>
                 </div>
 
             @if($post->hasMedia('attachments'))
                 <!-- Side widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Attachments</div>
+                        <div class="card-header">Anhang</div>
                         <div class="card-body">
 
                             @forelse($post->getMedia('attachments') as $attachment)
@@ -59,7 +59,7 @@
 
 
                 <div class="card mb-4">
-                    <div class="card-header">Related Posts</div>
+                    <div class="card-header">Zugehörige Posts</div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-6">
