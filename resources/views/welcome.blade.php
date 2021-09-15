@@ -7,34 +7,38 @@
         <div class="row">
 
             <div class="col-lg-3">
-
+                @php $categoryName = '' @endphp
+                @isset($category)
+                    @php $categoryName = $category->name  @endphp
+                @endif
                 <div class="card mb-4">
                     <div class="card-header">Kategorien</div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-12">
                             <div class="sidenav">
-                                <a href="#about">About</a>
-                                <a href="#services">Services</a>
-                                <button class="dropdown-btn">
-                                    <i class="fa fa-caret-right"></i>
-                                    Dropdown 
-                                </button>
-                                <div class="dropdown-container">
-                                    <a href="#">Link 1</a>
-                                    <a href="#">Link 2</a>
-                                    <a href="#">Link 3</a>
-                                </div>
-                                <a href="#contact">Contact</a>
-                                <button class="dropdown-btn">Dropdown 
-                                    <i class="fa fa-caret-down"></i>
-                                </button>
-                                <div class="dropdown-container">
-                                    <a href="#">Link 1</a>
-                                    <a href="#">Link 2</a>
-                                    <a href="#">Link 3</a>
-                                </div>
-                                <a href="#contact">Search</a>
+
+                                @forelse($categories as $category)
+
+                                    @if($category->childCategories->count() > 0)
+
+                                        <button class="dropdown-btn">
+                                            <i class="fa fa-caret-right"></i>
+                                            {{ $category->name }}
+                                        </button>
+                                        <div class="dropdown-container">
+                                            @foreach($category->childCategories as $childCategory)
+                                                <a href="{{ route('category-posts', $childCategory) }}">{{ $childCategory->name }}</a>
+                                            @endforeach
+                                        </div>
+
+                                    @else
+                                        <a href="{{ route('category-posts', $category) }}">{{ $category->name }}</a>
+                                    @endif
+                                @empty
+                                    <li>No Kategorien Found</li>
+                                @endforelse
+
                                 </div>
                             </div>
                         </div>
@@ -42,7 +46,9 @@
                 </div>
             </div>
             <div class="col-lg-9">
-                <h3 class="mb-3">Category Name will be here</h3>
+                @if($categoryName)
+                    <h3 class="mb-3">{{ $categoryName }}</h3>
+                @endif
                 <div class="row">
                     @forelse($posts as $post)
                         <div class="col-md-4">
@@ -141,7 +147,7 @@ button:focus {
     /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
     var dropdown = document.getElementsByClassName("dropdown-btn");
     var i;
-    
+
     for (i = 0; i < dropdown.length; i++) {
       dropdown[i].addEventListener("click", function() {
       this.classList.toggle("active");
@@ -153,7 +159,7 @@ button:focus {
             icon.className = 'fa fa-caret-right'
             dropdownContent.style.display = "none";
       } else {
-            
+
             dropdownContent.style.display = "block";
             icon.className = 'fa fa-caret-down'
       }
