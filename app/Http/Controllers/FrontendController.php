@@ -19,7 +19,7 @@ class FrontendController extends Controller
         ->paginate();
 
         $categories = Category::with('childCategories')
-            ->whereNull('category_id')
+            ->whereNotNull('category_id')
             ->get();
 
         return view('welcome', compact('posts', 'categories'));
@@ -34,7 +34,7 @@ class FrontendController extends Controller
     public function categoryPosts(Category $category)
     {
         $categories = Category::with('childCategories')
-            ->whereNull('category_id')
+            ->whereCategoryId($category->id)
             ->get();
 
         $posts = $category->posts()->with(['category', 'media'])->paginate();

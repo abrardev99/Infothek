@@ -17,8 +17,7 @@ class CategoryController
 
     public function create() : View
     {
-        $categories = Category::whereNull('category_id')
-            ->get();
+        $categories = Category::all();
 
         return view('user.category.create', compact('categories'));
     }
@@ -55,9 +54,7 @@ class CategoryController
 
     public function edit(Category $category) : View
     {
-        $categories = Category::whereNull('category_id')
-            ->with('childCategories')
-            ->get();
+        $categories = Category::all();
 
         return view('user.category.edit', compact('categories', 'category'));
     }

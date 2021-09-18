@@ -36,7 +36,7 @@
                                         <a href="{{ route('category-posts', $category) }}">{{ $category->name }}</a>
                                     @endif
                                 @empty
-                                    <li>No Kategorien Found</li>
+
                                 @endforelse
 
                                 </div>

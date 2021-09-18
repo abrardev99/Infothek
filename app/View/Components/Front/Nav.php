@@ -10,8 +10,8 @@ class Nav extends Component
     public $categories;
     public function __construct()
     {
-//        $this->categories = Category::whereNull('category_id')
-//                                        ->with('childCategories')->get();
+        $this->categories = Category::whereNull('category_id')
+                                        ->get();
     }
 
     public function render()
